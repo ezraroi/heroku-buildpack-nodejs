@@ -336,12 +336,9 @@ install_bower() {
 
 run_grunt() {
   if [ -f $build_dir/grunt.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
-    # get the env vars
-    if [ -d "$env_dir" ]; then
-      info "Exporting config vars to environment"
-      export_env_dir $env_dir
-    fi
+    
     # make sure that grunt and grunt-cli are installed locally
+    info "Installing grunt-cli and grunt"
     npm install grunt-cli
     npm install grunt
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
