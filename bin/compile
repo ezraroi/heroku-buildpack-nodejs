@@ -53,9 +53,15 @@ install_npm
 
 ####### Build the project's dependencies
 
+export NODE_ENV=development
+
 head "Building dependencies"
 cd $build_dir
 build_dependencies
+
+install_bower
+
+run_grunt
 
 ####### Create a Procfile if possible
 
