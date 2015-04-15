@@ -164,6 +164,7 @@ install_npm() {
 }
 
 function build_dependencies() {
+  export NODE_ENV=development
   restore_cache
 
   if [ "$modules_source" == "" ]; then
