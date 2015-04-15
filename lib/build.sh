@@ -343,7 +343,8 @@ run_grunt() {
     npm install grunt
     export NODE_ENV=production
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
-    $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+    #$build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+    $build_dir/node_modules/.bin/grunt
   else
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, gruntfile.js, Gruntfile.coffee) found"
   fi
