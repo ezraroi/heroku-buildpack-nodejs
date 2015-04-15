@@ -164,7 +164,6 @@ install_npm() {
 }
 
 function build_dependencies() {
-  export NODE_ENV=development
   restore_cache
 
   if [ "$modules_source" == "" ]; then
@@ -174,11 +173,11 @@ function build_dependencies() {
     info "Rebuilding any native modules for this architecture"
     npm rebuild 2>&1 | indent
     info "Installing any new modules"
-    npm install --unsafe-perm --quiet  2>&1 | indent
+    npm install --dev 2>&1 | indent
 
   else
     info "Installing node modules"
-    npm install --unsafe-perm --quiet  2>&1 | indent
+    npm install --dev  2>&1 | indent
   fi
 }
 
@@ -342,9 +341,7 @@ run_grunt() {
     info "Installing grunt-cli and grunt"
     npm install grunt-cli
     npm install grunt
-    export NODE_ENV=production
-    echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
-    #$build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+    echo "-----> Found Gruntfile, running grunt build task"
     $build_dir/node_modules/.bin/grunt build
   else
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, gruntfile.js, Gruntfile.coffee) found"
