@@ -341,6 +341,7 @@ run_grunt() {
     info "Installing grunt-cli and grunt"
     npm install grunt-cli
     npm install grunt
+    export NODE_ENV=production
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
     $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
   else
