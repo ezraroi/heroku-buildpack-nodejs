@@ -168,16 +168,15 @@ function build_dependencies() {
 
   if [ "$modules_source" == "" ]; then
     info "Skipping dependencies (no source for node_modules)"
-
+  export NODE_ENV=development
   elif [ "$modules_source" == "prebuilt" ]; then
     info "Rebuilding any native modules for this architecture"
     npm rebuild 2>&1 | indent
     info "Installing any new modules"
-    npm install --dev 2>&1 | indent
-
+    npm install 2>&1 | indent
   else
     info "Installing node modules"
-    npm install --dev  2>&1 | indent
+    npm install 2>&1 | indent
   fi
 }
 
